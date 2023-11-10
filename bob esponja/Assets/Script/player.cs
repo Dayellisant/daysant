@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class player : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public int velocidade = 10;
     public int forcaPulo = 7;
 
     private Rigidbody rb;
     private AudioSource source;
-    public AudioClip clipPulo, clipMoeda;
+    
 
     public bool noChao;
  // Start is called before the first frame update
@@ -33,7 +33,8 @@ public class player : MonoBehaviour
         rb.AddForce(new Vector3(h, 0, v) * velocidade);
 
         if(Input.GetKeyDown(KeyCode.Space) && (noChao == true)){
-            source.PlayOneShot(clipPulo);
+            source.Play();
+            
             rb.AddForce(Vector3.up * forcaPulo, ForceMode.Impulse);
             noChao = false;
         }
